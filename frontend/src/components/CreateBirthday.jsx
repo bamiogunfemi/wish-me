@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 const CreateBirthday = () => {
     const navigate = useNavigate();
     const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB maximum file size
-    const MAX_WISH_LENGTH = 200; // Fixed maximum character count for wishes
 
     // Form state management
     const [formState, setFormState] = useState({
@@ -54,7 +53,6 @@ const CreateBirthday = () => {
 
         const formData = new FormData();
         formData.append("name", name);
-        formData.append("wishCharLimit", MAX_WISH_LENGTH);
 
         if (image) {
             formData.append("image", image);
@@ -135,35 +133,7 @@ const CreateBirthday = () => {
         </div>
     );
 
-    const WishingTextAreaExample = () => {
-        const [wishText, setWishText] = useState("");
 
-        return (
-            <div>
-                <Label
-                    htmlFor="wishExample"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                    Birthday Wish Example
-                </Label>
-                <div className="relative">
-                    <Textarea
-                        id="wishExample"
-                        placeholder="Write a birthday wish example..."
-                        value={wishText}
-                        onChange={(e) => setWishText(e.target.value.slice(0, MAX_WISH_LENGTH))}
-                        rows={3}
-                        className="bg-gray-50 dark:bg-[#000000] dark:text-gray-100 dark:border-[#222222]"
-                        maxLength={MAX_WISH_LENGTH}
-                    />
-                    <div className="absolute bottom-2 right-2 text-xs text-gray-500">
-                        {wishText.length}/{MAX_WISH_LENGTH}
-                    </div>
-                </div>
-
-            </div>
-        );
-    };
 
     const SubmitButton = () => (
         <Button
@@ -244,9 +214,8 @@ const CreateBirthday = () => {
                                     value={name}
                                     onChange={(e) => updateFormState({ name: e.target.value })}
                                     required
-                                    className=" dark:!bg-black dark:!text-white dark:border-[#222222] " />
+                                    className="" />
                                 <ImageUploader />
-                                <WishingTextAreaExample />
 
                                 <SubmitButton />
                             </form>

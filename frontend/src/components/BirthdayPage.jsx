@@ -23,6 +23,7 @@ const BirthdayPage = () => {
     const [birthday, setBirthday] = useState(null);
     const [wishes, setWishes] = useState([]);
     const [error, setError] = useState(null);
+    const MAX_WISH_LENGTH = 300; // Maximum character count for wishes
 
     // Drawer for adding wishes
     const [isWishDrawerOpen, setIsWishDrawerOpen] = useState(false);
@@ -124,7 +125,11 @@ const BirthdayPage = () => {
     };
 
     const closeShareDrawer = () => setIsShareOpen(false);
-
+    // Message input handler with character limit
+    const handleMessageChange = (e) => {
+        // Limit to MAX_WISH_LENGTH characters
+        setWishMessage(e.target.value.slice(0, MAX_WISH_LENGTH));
+    };
     const handleShareSubmit = async () => {
         setShareLoading(true);
         setShareError(null);
@@ -451,15 +456,21 @@ const BirthdayPage = () => {
                                 >
                                     Your Message
                                 </Label>
-                                <Textarea
-                                    id="wishMessage"
-                                    placeholder="Write your birthday wishes..."
-                                    rows={4}
-                                    value={wishMessage}
-                                    onChange={(e) => setWishMessage(e.target.value)}
-                                    required
-                                    className="dark:bg-[#111111] dark:border-gray-600 dark:text-gray-100"
-                                />
+                                <div className="relative">
+                                    <Textarea
+                                        id="wishMessage"
+                                        placeholder="Write your birthday wishes..."
+                                        rows={5}
+                                        value={wishMessage}
+                                        onChange={handleMessageChange}
+                                        required
+                                        maxLength={MAX_WISH_LENGTH}
+                                        className="dark:bg-[#111111] dark:border-gray-600 dark:text-gray-100"
+                                    />
+                                    <div className="absolute bottom-2 right-2 text-xs text-gray-500 dark:text-gray-400">
+                                        {wishMessage.length}/{MAX_WISH_LENGTH}
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>

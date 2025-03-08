@@ -11,5 +11,8 @@
 
 body{
   font-family: "Poppins", sans-serif;
+}
 
+input{
+  @apply dark:!bg-black ;
 }
