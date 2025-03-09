@@ -231,7 +231,7 @@ const BirthdayPage = () => {
                     flex items-center gap-2
                     border border-pink-700
                     dark:border-pink-600
-                    dark:hover:bg-pink-700
+                   bg-pink-700
                     hover:bg-pink-800
                   "
                                 >
@@ -278,7 +278,7 @@ const BirthdayPage = () => {
                       flex items-center gap-2 mx-auto
                       border border-pink-700
                       dark:border-pink-600
-                      dark:hover:bg-pink-700
+                     bg-pink-700
                       hover:bg-pink-800
                     "
                                     >
@@ -297,7 +297,7 @@ const BirthdayPage = () => {
                 flex items-center gap-2 m-6
                 border border-pink-700
                 dark:border-pink-600
-                dark:hover:bg-pink-700
+                bg-pink-700
                 hover:bg-pink-800
               "
                         >
